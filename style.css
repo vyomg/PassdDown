@@ -998,3 +998,305 @@ p {
     padding: 20px;
   }
 }
+
+/* ==========================================
+   PASS IT ON FLOATING BUTTON
+========================================== */
+
+.pass-it-on{
+    position:fixed;
+    right:26px;
+    bottom:28px;
+    z-index:9999;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    pointer-events:none;
+}
+
+.pass-button{
+    pointer-events:auto;
+
+    background:none;
+    border:none;
+    cursor:pointer;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+
+    animation:floatButton 3.5s ease-in-out infinite;
+
+    transition:transform .3s ease;
+}
+
+.pass-button:hover{
+    transform:translateY(-5px) scale(1.05);
+}
+
+.pass-button:active{
+    transform:scale(.95);
+}
+
+/* Shirt */
+
+.shirt-icon{
+
+    width:58px;
+    height:58px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--accent)
+    );
+
+    box-shadow:0 18px 45px rgba(21,87,176,.22);
+
+    transition:.35s;
+}
+
+.shirt-icon svg{
+    width:34px;
+    fill:#fff;
+}
+
+.pass-button:hover .shirt-icon{
+    transform:translateY(-3px) rotate(-3deg);
+}
+
+/* Dot */
+
+.pass-dot{
+
+    width:16px;
+    height:16px;
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    animation:pulseDot 2s infinite;
+
+}
+
+/* Toast */
+
+.pass-message{
+
+    position:absolute;
+
+    right:85px;
+    bottom:18px;
+
+    white-space:nowrap;
+
+    padding:12px 18px;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    border:1px solid rgba(0,0,0,.08);
+
+    box-shadow:0 12px 35px rgba(0,0,0,.12);
+
+    color:var(--primary);
+
+    font-weight:600;
+
+    opacity:0;
+
+    transform:translateX(20px);
+
+    transition:all .35s ease;
+
+    pointer-events:none;
+
+    z-index:10000;
+
+}
+
+.pass-message.show{
+
+    opacity:1;
+
+    transform:translateX(0);
+
+}
+
+/* Confetti */
+
+.confetti-container{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:99999;
+
+}
+
+.confetti{
+
+    position:absolute;
+
+    width:18px;
+    height:18px;
+
+    animation:confettiFly .9s ease-out forwards;
+
+}
+
+.confetti svg{
+
+    width:100%;
+
+    fill:var(--primary);
+
+}
+
+.heart{
+
+    position:absolute;
+
+    font-size:18px;
+
+    animation:confettiFly .9s ease-out forwards;
+
+}
+
+/* Shirt bounce */
+
+.pass-button.clicked .shirt-icon{
+
+    animation:shirtBounce .55s ease;
+
+}
+
+/* Floating */
+
+@keyframes floatButton{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+}
+
+/* Dot pulse */
+
+@keyframes pulseDot{
+
+    0%{
+        box-shadow:0 0 0 0 rgba(77,159,255,.45);
+    }
+
+    70%{
+        box-shadow:0 0 0 14px rgba(77,159,255,0);
+    }
+
+    100%{
+        box-shadow:0 0 0 0 rgba(77,159,255,0);
+    }
+
+}
+
+/* Bounce */
+
+@keyframes shirtBounce{
+
+    0%{transform:scale(1);}
+    30%{transform:scale(1.15);}
+    60%{transform:scale(.92);}
+    100%{transform:scale(1);}
+
+}
+
+/* Confetti */
+
+@keyframes confettiFly{
+
+    0%{
+
+        opacity:1;
+
+        transform:
+        translate(0,0)
+        rotate(0deg)
+        scale(.4);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+        translate(var(--x),var(--y))
+        rotate(540deg)
+        scale(1);
+
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width:640px){
+
+    .pass-it-on{
+
+        right:18px;
+        bottom:18px;
+
+    }
+
+    .shirt-icon{
+
+        width:50px;
+        height:50px;
+
+    }
+
+    .shirt-icon svg{
+
+        width:30px;
+
+    }
+
+    .pass-dot{
+
+        width:14px;
+        height:14px;
+
+    }
+
+    .pass-message{
+
+        right:70px;
+        bottom:10px;
+
+        font-size:.85rem;
+
+        padding:10px 14px;
+
+    }
+
+}
