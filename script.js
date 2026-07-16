@@ -139,3 +139,156 @@ const activeSectionObserver = new IntersectionObserver(
 sections.forEach((section) => {
   activeSectionObserver.observe(section);
 });
+
+/* ==========================================
+   PASS IT ON BUTTON
+========================================== */
+
+const passButton = document.querySelector(".pass-button");
+const passMessage = document.querySelector(".pass-message");
+const confettiContainer = document.querySelector(".confetti-container");
+
+if (passButton && passMessage && confettiContainer) {
+
+    passButton.addEventListener("click", () => {
+
+        // Bounce shirt
+        passButton.classList.add("clicked");
+
+        setTimeout(() => {
+            passButton.classList.remove("clicked");
+        }, 550);
+
+        // Show thank you
+const messages = [
+
+    "👕 Another story begins.",
+
+    "🌱 One less garment wasted.",
+
+    "💙 Kindness looks good on you.",
+
+    "♻️ The journey continues.",
+
+    "🧵 Every thread has a future.",
+
+    "👕 Someone will love this next.",
+
+    "🌍 Fashion, just a little kinder.",
+
+    "💫 Clothes deserve another chance.",
+
+    "❤️ Thanks for caring.",
+
+    "👕 I still have adventures left.",
+
+    "🧥 Don't leave me in the wardrobe.",
+
+    "👖 I was made to be worn.",
+
+    "🧦 Every click matters.",
+
+    "🌿 Keep the cycle alive.",
+
+    "💙 Rewear. Relove. Repeat.",
+
+    "👕 My next owner is waiting.",
+
+    "♻️ Keep it moving.",
+
+    "🌎 Small action. Big impact.",
+
+    "🫶 You're awesome.",
+
+    "👕 You found our little secret."
+
+];
+
+// Pick a random message
+const randomMessage =
+    messages[Math.floor(Math.random() * messages.length)];
+
+passMessage.textContent = randomMessage;
+
+passMessage.classList.add("show");
+
+setTimeout(() => {
+
+    passMessage.classList.remove("show");
+
+}, 2200);
+
+        // Confetti
+
+        for (let i = 0; i < 14; i++) {
+
+            const piece = document.createElement("div");
+            piece.className = "confetti";
+
+            piece.style.left =
+                window.innerWidth - 60 + "px";
+
+            piece.style.top =
+                window.innerHeight - 110 + "px";
+
+            piece.style.setProperty(
+                "--x",
+                `${(Math.random() - 0.5) * 280}px`
+            );
+
+            piece.style.setProperty(
+                "--y",
+                `${-Math.random() * 260}px`
+            );
+
+            piece.innerHTML = `
+            <svg viewBox="0 0 48 48">
+                <path d="M14 14h7l3 5 3-5h7l5 8-5 3v13H14V25l-5-3 5-8Z"/>
+            </svg>
+            `;
+
+            confettiContainer.appendChild(piece);
+
+            setTimeout(() => {
+                piece.remove();
+            }, 900);
+
+        }
+
+        // Hearts
+
+        for (let i = 0; i < 6; i++) {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.innerHTML = "❤️";
+
+            heart.style.left =
+                window.innerWidth - 60 + "px";
+
+            heart.style.top =
+                window.innerHeight - 110 + "px";
+
+            heart.style.setProperty(
+                "--x",
+                `${(Math.random() - 0.5) * 250}px`
+            );
+
+            heart.style.setProperty(
+                "--y",
+                `${-Math.random() * 240}px`
+            );
+
+            confettiContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 900);
+
+        }
+
+    });
+
+}
