@@ -232,7 +232,7 @@ a {
 }
 
 .hero-copy {
-  max-width: 660px;
+  max-width: 760px;
 }
 
 .eyebrow,
@@ -266,7 +266,7 @@ h3 {
 
 h1 {
   margin-top: 18px;
-  font-size: clamp(4.1rem, 9vw, 7.6rem);
+  font-size: clamp(3.2rem, 7vw, 6.4rem);
 }
 
 h2 {
@@ -286,12 +286,12 @@ p {
 .tagline {
   margin-top: 14px;
   color: var(--primary-dark);
-  font-size: clamp(1.35rem, 2.8vw, 2rem);
+  font-size: clamp(1.2rem, 2.4vw, 1.75rem);
   font-weight: 800;
 }
 
 .hero-text {
-  max-width: 580px;
+  max-width: 620px;
   margin-top: 18px;
   font-size: 1.14rem;
 }
@@ -392,11 +392,18 @@ p {
   gap: 22px;
 }
 
+.mission-grid {
+  max-width: 820px;
+  margin: 0 auto;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .feature-card,
 .stat-card,
 .step-card,
 .list-card,
-.impact-card {
+.impact-card,
+.announcement-card {
   border: 1px solid var(--border);
   background: #fff;
   border-radius: var(--radius);
@@ -408,7 +415,8 @@ p {
 .stat-card:hover,
 .step-card:hover,
 .list-card:hover,
-.impact-card:hover {
+.impact-card:hover,
+.announcement-card:hover {
   transform: translateY(-8px);
   border-color: rgba(77, 159, 255, 0.38);
   box-shadow: 0 26px 70px rgba(14, 60, 125, 0.12);
@@ -437,6 +445,32 @@ p {
   margin-top: 12px;
 }
 
+.announcement-section {
+  padding-top: 0;
+  padding-bottom: 88px;
+}
+
+.announcement-card {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 34px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(77, 159, 255, 0.16), transparent 32%),
+    #fff;
+}
+
+.announcement-card h2 {
+  margin-top: 12px;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+}
+
+.announcement-card p {
+  max-width: 680px;
+  margin: 16px auto 0;
+  font-size: 1.08rem;
+}
+
 .problem {
   background: linear-gradient(180deg, #fff 0%, #f8fbff 100%);
 }
@@ -455,7 +489,7 @@ p {
 }
 
 .stat-card strong {
-  min-width: 120px;
+  min-width: 150px;
   color: var(--primary);
   font-family: var(--font-heading);
   font-size: 1.6rem;
@@ -469,7 +503,7 @@ p {
 .steps {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 18px;
 }
 
@@ -498,6 +532,22 @@ p {
 .step-card span {
   color: var(--accent);
   font-weight: 900;
+}
+
+.waste-section {
+  background: linear-gradient(180deg, #fff 0%, #f8fbff 100%);
+}
+
+.waste-section .list-card {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.waste-section .list-card p {
+  margin-top: 14px;
+  font-size: 1.08rem;
 }
 
 .donation-grid {
@@ -835,6 +885,16 @@ p {
   }
 }
 
+@media (max-width: 1100px) {
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .step-card:not(:last-child)::after {
+    display: none;
+  }
+}
+
 @media (max-width: 920px) {
   .section {
     padding: 82px 0;
@@ -880,6 +940,7 @@ p {
   .hero-grid,
   .split-layout,
   .goal-grid,
+  .mission-grid,
   .impact-grid {
     grid-template-columns: 1fr;
   }
@@ -945,7 +1006,11 @@ p {
   }
 
   h1 {
-    font-size: clamp(3.1rem, 17vw, 4.3rem);
+    font-size: clamp(2.8rem, 14vw, 4.1rem);
+  }
+
+  .tagline {
+    font-size: 1.1rem;
   }
 
   .hero-text {
@@ -1003,300 +1068,193 @@ p {
    PASS IT ON FLOATING BUTTON
 ========================================== */
 
-.pass-it-on{
-    position:fixed;
-    right:26px;
-    bottom:28px;
-    z-index:9999;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-
-    pointer-events:none;
+.pass-it-on {
+  position: fixed;
+  right: 26px;
+  bottom: 28px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
 }
 
-.pass-button{
-    pointer-events:auto;
-
-    background:none;
-    border:none;
-    cursor:pointer;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:10px;
-
-    animation:floatButton 3.5s ease-in-out infinite;
-
-    transition:transform .3s ease;
+.pass-button {
+  pointer-events: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: floatButton 3.5s ease-in-out infinite;
+  transition: transform .3s ease;
 }
 
-.pass-button:hover{
-    transform:translateY(-5px) scale(1.05);
+.pass-button:hover {
+  transform: translateY(-5px) scale(1.05);
 }
 
-.pass-button:active{
-    transform:scale(.95);
+.pass-button:active {
+  transform: scale(.95);
 }
 
-/* Shirt */
-
-.shirt-icon{
-
-    width:58px;
-    height:58px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:18px;
-
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--accent)
-    );
-
-    box-shadow:0 18px 45px rgba(21,87,176,.22);
-
-    transition:.35s;
+.shirt-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  box-shadow: 0 18px 45px rgba(21,87,176,.22);
+  transition: .35s;
 }
 
-.shirt-icon svg{
-    width:34px;
-    fill:#fff;
+.shirt-icon svg {
+  width: 34px;
+  fill: #fff;
 }
 
-.pass-button:hover .shirt-icon{
-    transform:translateY(-3px) rotate(-3deg);
+.pass-button:hover .shirt-icon {
+  transform: translateY(-3px) rotate(-3deg);
 }
 
-/* Dot */
-
-.pass-dot{
-
-    width:16px;
-    height:16px;
-
-    border-radius:50%;
-
-    background:var(--accent);
-
-    animation:pulseDot 2s infinite;
-
+.pass-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulseDot 2s infinite;
 }
 
-/* Toast */
-
-.pass-message{
-
-    position:absolute;
-
-    right:85px;
-    bottom:18px;
-
-    white-space:nowrap;
-
-    padding:12px 18px;
-
-    background:#fff;
-
-    border-radius:14px;
-
-    border:1px solid rgba(0,0,0,.08);
-
-    box-shadow:0 12px 35px rgba(0,0,0,.12);
-
-    color:var(--primary);
-
-    font-weight:600;
-
-    opacity:0;
-
-    transform:translateX(20px);
-
-    transition:all .35s ease;
-
-    pointer-events:none;
-
-    z-index:10000;
-
+.pass-message {
+  position: absolute;
+  right: 85px;
+  bottom: 18px;
+  white-space: nowrap;
+  padding: 12px 18px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 12px 35px rgba(0,0,0,.12);
+  color: var(--primary);
+  font-weight: 600;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all .35s ease;
+  pointer-events: none;
+  z-index: 10000;
 }
 
-.pass-message.show{
-
-    opacity:1;
-
-    transform:translateX(0);
-
+.pass-message.show {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-/* Confetti */
-
-.confetti-container{
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    overflow:hidden;
-
-    z-index:99999;
-
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 99999;
 }
 
-.confetti{
-
-    position:absolute;
-
-    width:18px;
-    height:18px;
-
-    animation:confettiFly .9s ease-out forwards;
-
+.confetti {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  animation: confettiFly .9s ease-out forwards;
 }
 
-.confetti svg{
-
-    width:100%;
-
-    fill:var(--primary);
-
+.confetti svg {
+  width: 100%;
+  fill: var(--primary);
 }
 
-.heart{
-
-    position:absolute;
-
-    font-size:18px;
-
-    animation:confettiFly .9s ease-out forwards;
-
+.heart {
+  position: absolute;
+  font-size: 18px;
+  animation: confettiFly .9s ease-out forwards;
 }
 
-/* Shirt bounce */
-
-.pass-button.clicked .shirt-icon{
-
-    animation:shirtBounce .55s ease;
-
+.pass-button.clicked .shirt-icon {
+  animation: shirtBounce .55s ease;
 }
 
-/* Floating */
+@keyframes floatButton {
+  0%,100% {
+    transform: translateY(0);
+  }
 
-@keyframes floatButton{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-6px);
-    }
-
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
-/* Dot pulse */
+@keyframes pulseDot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(77,159,255,.45);
+  }
 
-@keyframes pulseDot{
+  70% {
+    box-shadow: 0 0 0 14px rgba(77,159,255,0);
+  }
 
-    0%{
-        box-shadow:0 0 0 0 rgba(77,159,255,.45);
-    }
-
-    70%{
-        box-shadow:0 0 0 14px rgba(77,159,255,0);
-    }
-
-    100%{
-        box-shadow:0 0 0 0 rgba(77,159,255,0);
-    }
-
+  100% {
+    box-shadow: 0 0 0 0 rgba(77,159,255,0);
+  }
 }
 
-/* Bounce */
-
-@keyframes shirtBounce{
-
-    0%{transform:scale(1);}
-    30%{transform:scale(1.15);}
-    60%{transform:scale(.92);}
-    100%{transform:scale(1);}
-
+@keyframes shirtBounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.15); }
+  60% { transform: scale(.92); }
+  100% { transform: scale(1); }
 }
 
-/* Confetti */
+@keyframes confettiFly {
+  0% {
+    opacity: 1;
+    transform:
+      translate(0,0)
+      rotate(0deg)
+      scale(.4);
+  }
 
-@keyframes confettiFly{
-
-    0%{
-
-        opacity:1;
-
-        transform:
-        translate(0,0)
-        rotate(0deg)
-        scale(.4);
-
-    }
-
-    100%{
-
-        opacity:0;
-
-        transform:
-        translate(var(--x),var(--y))
-        rotate(540deg)
-        scale(1);
-
-    }
-
+  100% {
+    opacity: 0;
+    transform:
+      translate(var(--x),var(--y))
+      rotate(540deg)
+      scale(1);
+  }
 }
 
-/* Mobile */
+@media (max-width:640px) {
+  .pass-it-on {
+    right: 18px;
+    bottom: 18px;
+  }
 
-@media (max-width:640px){
+  .shirt-icon {
+    width: 50px;
+    height: 50px;
+  }
 
-    .pass-it-on{
+  .shirt-icon svg {
+    width: 30px;
+  }
 
-        right:18px;
-        bottom:18px;
+  .pass-dot {
+    width: 14px;
+    height: 14px;
+  }
 
-    }
-
-    .shirt-icon{
-
-        width:50px;
-        height:50px;
-
-    }
-
-    .shirt-icon svg{
-
-        width:30px;
-
-    }
-
-    .pass-dot{
-
-        width:14px;
-        height:14px;
-
-    }
-
-    .pass-message{
-
-        right:70px;
-        bottom:10px;
-
-        font-size:.85rem;
-
-        padding:10px 14px;
-
-    }
-
+  .pass-message {
+    right: 70px;
+    bottom: 10px;
+    font-size: .85rem;
+    padding: 10px 14px;
+  }
 }
